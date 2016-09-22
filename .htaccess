@@ -9,7 +9,7 @@ AddHandler x-httpd-php53 .inc .php .php3 .php4 .php5 .phtml
 RewriteEngine On
 
 RewriteCond %{QUERY_STRING} !portal_page_path  
-RewriteRule ^(.*)/(.*)$ /rest/index.php?portal_page_path=rest&entity=$1&id=$2 [L]
+RewriteRule ^(.*)/(.*)$ /Biegi/index.php?portal_page_path=rest&entity=$1&id=$2 [L]
 
 RewriteCond %{QUERY_STRING} !portal_page_path  
-RewriteRule ^(.*)$ /rest/index.php?portal_page_path=rest&entity=$1 [L]
+RewriteRule ^(.*)$ /Biegi/index.php?portal_page_path=rest&entity=$1 [L]
