@@ -1,0 +1,15 @@
+<FilesMatch "\.(inc|php|php3|php4|php5|php6|phtml|phps)$">
+AddHandler x-httpd-php53 .inc .php .php3 .php4 .php5 .phtml
+</FilesMatch> 
+
+<Limit GET POST PUT DELETE>
+  Allow from all
+</Limit>
+
+RewriteEngine On
+
+RewriteCond %{QUERY_STRING} !portal_page_path  
+RewriteRule ^(.*)/(.*)$ /rest/index.php?portal_page_path=rest&entity=$1&id=$2 [L]
+
+RewriteCond %{QUERY_STRING} !portal_page_path  
+RewriteRule ^(.*)$ /rest/index.php?portal_page_path=rest&entity=$1 [L]
