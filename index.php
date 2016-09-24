@@ -11,7 +11,7 @@
 		}
 		$entity = $_GET['entity'];
 		if ($entity == "auth") {
-            echo json_encode("lol");
+            echo json_encode(1);
             exit;
         }
     }
