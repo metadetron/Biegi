@@ -15,7 +15,7 @@
 	            echo json_encode(1);
 	            exit;
 			case "month":
-	            echo json_encode(array('2015-07' => 100, '2015-08' => 105, '2015-09' => 120, '2015-10' => 80));
+	            echo json_encode(array(array('2015-07', 100), array('2015-08', 105), array('2015-09', 120), array('2015-10', 80)));
 	            exit;				
 			default:
 				header("HTTP/1.1 500 Internal Server Error");
