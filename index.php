@@ -14,5 +14,8 @@
             echo json_encode(1);
             exit;
         }
+		header("HTTP/1.1 500 Internal Server Error");
+		echo "Entity not supported";
+		exit;		
     }
 ?>
