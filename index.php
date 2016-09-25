@@ -53,11 +53,11 @@
 			case "pb":
 	            echo json_encode(
 					array(
-						array("track" => date("Błonia"), "time" => "23:21"),
-						array("track" => date("Krynica"), "time" => "27:22"),
-						array("track" => date("Lolów"), "time" => "25:48"),
-						array("track" => date("Bulwary"), "time" => "33:23"),
-						array("track" => date("Radziejowice"), "time" => "13:37")
+						array("track" => "Błonia", "time" => "23:21"),
+						array("track" => "Krynica", "time" => "27:22"),
+						array("track" => "Lolów", "time" => "25:48"),
+						array("track" => "Bulwary", "time" => "33:23"),
+						array("track" => "Radziejowice", "time" => "13:37")
 					)
 				);
 	            exit;
