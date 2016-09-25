@@ -47,6 +47,9 @@
 					)
 				);
 	            exit;				
+			case "stats":
+	            echo json_encode(array("currentDate" => date(), "runCount" => 146, "lastRun" => " 2016-09-23", "totalDistance" => 566.61));
+	            exit;
 			default:
 				header("HTTP/1.1 500 Internal Server Error");
 				echo "Entity not supported";
