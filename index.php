@@ -48,7 +48,18 @@
 				);
 	            exit;				
 			case "stats":
-	            echo json_encode(array("currentDate" => date("Y-m-d H:i:s"), "runCount" => 146, "lastRun" => " 2016-09-23", "totalDistance" => 566.61));
+	            echo json_encode(array("currentDate" => date("Y-m-d H:i:s"), "runCount" => 146, "lastRun" => "2016-09-23", "totalDistance" => 566.61));
+	            exit;
+			case "pb":
+	            echo json_encode(
+					array(
+						array("track" => date("Błonia"), "time" => "23:21"),
+						array("track" => date("Krynica"), "time" => "27:22"),
+						array("track" => date("Lolów"), "time" => "25:48"),
+						array("track" => date("Bulwary"), "time" => "33:23"),
+						array("track" => date("Radziejowice"), "time" => "13:37")
+					)
+				);
 	            exit;
 			default:
 				header("HTTP/1.1 500 Internal Server Error");
