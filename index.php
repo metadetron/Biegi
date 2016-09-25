@@ -48,7 +48,7 @@
 				);
 	            exit;				
 			case "stats":
-	            echo json_encode(array("currentDate" => date(), "runCount" => 146, "lastRun" => " 2016-09-23", "totalDistance" => 566.61));
+	            echo json_encode(array("currentDate" => date("Y-m-d H:i:s"), "runCount" => 146, "lastRun" => " 2016-09-23", "totalDistance" => 566.61));
 	            exit;
 			default:
 				header("HTTP/1.1 500 Internal Server Error");
