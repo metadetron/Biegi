@@ -1,8 +1,15 @@
 <?php
+/*
+	This is URL/JSON layer and we only care about this here
+ */ 
+
 	session_start();
 	header("Access-Control-Allow-Orgin: *");
-    header("Access-Control-Allow-Methods: *");
-    header("Content-Type: application/json");
+    	header("Access-Control-Allow-Methods: *");
+    	header("Content-Type: application/json");
+
+	include_once "virgo.php";
+
 	$method = $_SERVER['REQUEST_METHOD'];
 	if ($method == "GET") {
 		if (is_null($_GET['entity'])) {
@@ -12,10 +19,10 @@
 		$entity = $_GET['entity'];
 		switch ($entity) {
 			case "auth":
-	            echo json_encode(1);
-	            exit;
+	            	echo json_encode(1);
+	            	exit;
 			case "month":
-	            echo json_encode(
+	            	echo json_encode(
 					array(
 						array('2014-07',  33)          
 						,array('2014-08',  34.95)          
@@ -46,12 +53,14 @@
 						,array('2016-09',  26.48)          
 					)
 				);
-	            exit;				
+	            	exit;				
 			case "stats":
-	            echo json_encode(array("currentDate" => date("Y-m-d H:i:s"), "runCount" => 146, "lastRun" => "2016-09-23", "totalDistance" => 566.61));
-	            exit;
+				$res = VirgoAccessLayer::callVirgoClassMethod($entity, "get");
+	            	// echo json_encode(array("currentDate" => date("Y-m-d H:i:s"), "runCount" => 146, "lastRun" => "2016-09-23", "totalDistance" => 566.61));
+				echo json_encode($res);
+	            	exit;
 			case "pb":
-	            echo json_encode(
+	            	echo json_encode(
 					array(
 						array("track" => "Błonia", "time" => "23:21"),
 						array("track" => "Krynica", "time" => "27:22"),
@@ -60,7 +69,7 @@
 						array("track" => "Radziejowice", "time" => "13:37")
 					)
 				);
-	            exit;
+	            	exit;
 			default:
 				header("HTTP/1.1 500 Internal Server Error");
 				echo "Entity not supported";
