@@ -1,5 +1,5 @@
 <?php
-    public class VirgoAccessLayer {
+    class VirgoAccessLayer {
         public static function callVirgoClassMethod($entityName, $methodName) {
             return 1;
         }
