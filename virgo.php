@@ -39,7 +39,7 @@
     }
 
 /****************** Unit tests ***********************/
-    if ($GET["ut"] == "y") {
+    if ($_GET["ut"] == "y") {
         $error = "";
         $ret = getInstanceByName("", "", $error);
         echo "<div>" . $error . "</div>";
