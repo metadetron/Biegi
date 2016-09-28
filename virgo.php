@@ -23,7 +23,7 @@
 
 	function getInstanceByName($entity) {
 		$entityName = ucfirst($entity);
-		$className = "event\\virgo" . $entityName;
+		$className = VIRGO_PORTAL_INSTANCE."\\virgo" . $entityName;
 		require_once(PORTAL_PATH.DIRECTORY_SEPARATOR.'portlets/'.VIRGO_PORTAL_INSTANCE.'/virgo' . $entityName . '/controller.php');
 		return new $className;		
 	}
