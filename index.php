@@ -25,9 +25,10 @@
 			header("HTTP/1.1 406 Missing entity information");
 			return;
 		}
-		$entity = $_GET['entity'];		
+		$entity = $_GET['entity'];
+		$id = $_GET['id'];
 		$error = "";
-		$res = VirgoAccessLayer::callVirgoClassMethod($entity, $method, $error);	
+		$res = VirgoAccessLayer::callVirgoClassMethod($entity, $method, $id, $error);	
 		returnJson($res, $error);
     }
 ?>

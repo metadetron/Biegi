@@ -1,6 +1,14 @@
 <?php
 	/*
-		Our only concern here is that the requested virgo object is invoked, method called and result returned
+		Our only concern here is that the requested virgo object is invoked, method called and result returned.
+		In general: we don't introduce custom actions like "addToCart" but try to define custom entities instead...
+		Collection URL = /customers
+		Specific Item URL = /customers/32
+			POST Create (Collection URL)	
+			GET	Read (Both)
+			PUT	Update/Replace (Specific Item URL)
+			PATCH Update/Modify (Specific Item URL)
+			DELETE	Delete (Specific Item URL)
 	*/
 
 	/* error_reporting(E_ERROR); TODO uncomment */
@@ -33,13 +41,16 @@
 	}
 
     class VirgoAccessLayer {
-        public static function callVirgoClassMethod($entityName, $methodName, &$errorMessage) {
+        public static function callVirgoClassMethod($entityName, $methodName, $id, &$errorMessage) {
             $instance = getInstanceByName($entityName);
             if (is_null($instance)) {
 				$errorMessage = "Unable to instantiate entity '$entityName'";
 				return;
             }
-			return $instance->$methodName(); 
+			if ($methodName == "GET") {
+				$instance->load($id);
+				return $instance;
+			}
         }
     }
 ?>
