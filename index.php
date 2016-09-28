@@ -10,11 +10,13 @@
 
 	include_once "virgo.php";
 
+	// Jednak errory musza byc poprzez kody HTTP zwracane a nie jak w HP!
+	// Bo to nie my obslugujemy ich odbior tylko backbone! 
 	function returnJson($res, $error) {
 		if ($error == "") {
-			echo json_encode(array("success" => true, "result" => $res));
+			echo json_encode($res);
 		} else {
-			echo json_encode(array("success" => false, "result" => $error));
+			header("HTTP/1.1 406 $error");
 		}
 		exit;
 	}
