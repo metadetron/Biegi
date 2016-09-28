@@ -1,5 +1,5 @@
 <?php
-	error_reporting(E_ERROR);
+	/* error_reporting(E_ERROR); TODO uncomment */
 	define( '_INDEX_PORTAL', 1 );
 	define('PORTAL_PATH', '/home/sirjoe/portal_4');
 	define('VIRGO_PORTAL_INSTANCE', 'biegi');
@@ -24,7 +24,7 @@
 	function getInstanceByName($entity) {
 		$entityName = ucfirst($entity);
 		$className = "event\\virgo" . $entityName;
-		require_once(PORTAL_PATH.DIRECTORY_SEPARATOR.'portlets/event/virgo' . $entityName . '/controller.php');
+		require_once(PORTAL_PATH.DIRECTORY_SEPARATOR.'portlets/'.VIRGO_PORTAL_INSTANCE.'/virgo' . $entityName . '/controller.php');
 		return new $className;		
 	}
 

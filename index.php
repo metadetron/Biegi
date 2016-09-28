@@ -10,6 +10,11 @@
 
 	include_once "virgo.php";
 
+	function returnJson($res, $error) {		
+		echo json_encode(array("success" => ($error == ""), "result" => $res, "error" => $error));
+		exit;
+	}
+
 	$method = $_SERVER['REQUEST_METHOD'];
 	if ($method == "GET") {
 		if (is_null($_GET['entity'])) {
@@ -55,10 +60,12 @@
 				);
 	            	exit;				
 			case "stats":
-				$res = VirgoAccessLayer::callVirgoClassMethod($entity, "get");
+				$error = "";
+				$res = VirgoAccessLayer::callVirgoClassMethod($entity, "get", $error);	
+				returnJson($res, $error);
 	            	// echo json_encode(array("currentDate" => date("Y-m-d H:i:s"), "runCount" => 146, "lastRun" => "2016-09-23", "totalDistance" => 566.61));
-				echo json_encode($res);
-	            	exit;
+				// echo json_encode($res);
+	            	// exit;
 			case "pb":
 	            	echo json_encode(
 					array(
