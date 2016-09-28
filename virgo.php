@@ -1,4 +1,8 @@
 <?php
+	/*
+		Our only concern here is that the requested virgo object is invoked, method called and result returned
+	*/
+
 	/* error_reporting(E_ERROR); TODO uncomment */
 	define( '_INDEX_PORTAL', 1 );
 	define('PORTAL_PATH', '/home/sirjoe/portal_4');
@@ -32,16 +36,10 @@
         public static function callVirgoClassMethod($entityName, $methodName, &$errorMessage) {
             $instance = getInstanceByName($entityName);
             if (is_null($instance)) {
-
-            } 
-            return 1;
+				$errorMessage = "Unable to instantiate entity '$entityName'";
+				return;
+            }
+			return $instance->$methodName(); 
         }
-    }
-
-/****************** Unit tests ***********************/
-    if ($_GET["ut"] == "y") {
-        $error = "";
-        $ret = getInstanceByName("", "", $error);
-        echo "<div>" . $error . "</div>";
     }
 ?>
