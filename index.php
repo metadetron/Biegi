@@ -10,8 +10,12 @@
 
 	include_once "virgo.php";
 
-	function returnJson($res, $error) {		
-		echo json_encode(array("success" => ($error == ""), "result" => $res, "error" => $error));
+	function returnJson($res, $error) {
+		if ($error == "") {
+			echo json_encode(array("success" => true, "result" => $res));
+		} else {
+			echo json_encode(array("success" => false, "result" => $error));
+		}
 		exit;
 	}
 
