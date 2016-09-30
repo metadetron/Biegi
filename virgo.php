@@ -48,7 +48,7 @@
 				return;
             }
 			if ($methodName == "GET") {
-				if (isset($id)) {
+				if (isset($id) && $id != "") {
 					$instance->load($id);
 					return $instance;
 				} else {
