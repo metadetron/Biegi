@@ -48,8 +48,12 @@
 				return;
             }
 			if ($methodName == "GET") {
-				$instance->load($id);
-				return $instance;
+				if (isset($id)) {
+					$instance->load($id);
+					return $instance;
+				} else {
+					return $instance->selectAll();
+				}
 			}
         }
     }
