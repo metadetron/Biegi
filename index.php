@@ -11,8 +11,8 @@
 	include_once "virgo.php";
 
 	// TODO handle this properly
-	$_SESSION['current_role_id'] = "biegacz";
-	$_SESSION['user_id'] = 10;
+//	$_SESSION['current_role_id'] = "biegacz";
+//	$_SESSION['user_id'] = 10;
 
 	// Jednak errory musza byc poprzez kody HTTP zwracane a nie jak w HP!
 	// Bo to nie my obslugujemy ich odbior tylko backbone! 
