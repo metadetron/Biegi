@@ -52,7 +52,12 @@
 					$instance->load($id);
 					return $instance;
 				} else {
-					return $instance->selectAll();
+					try {
+						return $instance->selectAll('', '', null, null, $errorMessage);
+					} catch (Exception $e) {
+						$errorMessage = $e->getMessage();
+						return;
+					}
 				}
 			}
         }
