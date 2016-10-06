@@ -76,6 +76,21 @@
 						return;
 					}
 					break;
+				case "DELETE":
+					if (isset($id) && $id != "") {
+						$instance->load($id);
+						$errMsg = $instance->delete();
+						if ($errMsg == "") {
+							return;
+						} else {
+							$errorMessage = $errMsg;
+						} 
+						return;
+					} else {
+						$errorMessage = "Instance not found with id = $id";
+						return;
+					}
+					break;
 			}
         }
     }
