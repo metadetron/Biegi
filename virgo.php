@@ -63,7 +63,7 @@
 					break;
 				case "POST":
 					try {
-						return $instance->loadRecordFromRequest();
+						$instance->loadRecordFromRequest();
 						$errMsg = $instance->store();
 						if ($errMsg == "") {
 							return;
