@@ -67,8 +67,10 @@
 						$errMsg = $instance->store();
 						if ($errMsg == "") {
 							return;
+						} else {
+							$errorMessage = $errMsg;
 						} 
-						return $errMsg;
+						return;
 					} catch (Exception $e) {
 						$errorMessage = $e->getMessage();
 						return;
