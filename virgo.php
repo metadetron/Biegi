@@ -47,18 +47,33 @@
 				$errorMessage = "Unable to instantiate entity '$entityName'";
 				return;
             }
-			if ($methodName == "GET") {
-				if (isset($id) && $id != "") {
-					$instance->load($id);
-					return $instance;
-				} else {
+			switch ($methodName) {
+				case "GET":
+					if (isset($id) && $id != "") {
+						$instance->load($id);
+						return $instance;
+					} else {
+						try {
+							return $instance->selectAll('', '', null, null, $errorMessage);
+						} catch (Exception $e) {
+							$errorMessage = $e->getMessage();
+							return;
+						}
+					}
+					break;
+				case "POST":
 					try {
-						return $instance->selectAll('', '', null, null, $errorMessage);
+						return $instance->loadRecordFromRequest();
+						$errMsg = $instance->store();
+						if ($errMsg == "") {
+							return;
+						} 
+						return $errMsg;
 					} catch (Exception $e) {
 						$errorMessage = $e->getMessage();
 						return;
 					}
-				}
+					break;
 			}
         }
     }

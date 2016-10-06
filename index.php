@@ -26,15 +26,13 @@
 	}
 
 	$method = $_SERVER['REQUEST_METHOD'];
-	if ($method == "GET") {
-		if (is_null($_GET['entity'])) {
-			header("HTTP/1.1 406 Missing entity information");
-			return;
-		}
-		$entity = $_GET['entity'];
-		$id = $_GET['id'];
-		$error = "";
-		$res = VirgoAccessLayer::callVirgoClassMethod($entity, $method, $id, $error);	
-		returnJson($res, $error);
-    }
+	if (is_null($_GET['entity'])) {
+		header("HTTP/1.1 406 Missing entity information");
+		return;
+	}
+	$entity = $_GET['entity'];
+	$id = $_GET['id'];
+	$error = "";
+	$res = VirgoAccessLayer::callVirgoClassMethod($entity, $method, $id, $error);	
+	returnJson($res, $error);
 ?>
