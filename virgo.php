@@ -63,7 +63,7 @@
 					break;
 				case "POST":
 					try {
-						$instance->loadRecordFromRequest();
+						$instance->loadRecordFromRequest(null);
 						$errMsg = $instance->store();
 						if ($errMsg == "") {
 							return;
@@ -87,7 +87,7 @@
 						} 
 						return;
 					} else {
-						$errorMessage = "Instance not found with id = $id";
+						$errorMessage = "Empty ID passed";
 						return;
 					}
 					break;
