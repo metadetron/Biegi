@@ -50,18 +50,18 @@
 			switch ($methodName) {
 				case "GET":
 					if (isset($id) && $id != "") {
-						$instance->load($id);
+						if (is_numeric($id)) {
+							$instance->load($id);
+						} else {
+							return $instance->{$id}();
+						}
 						return $instance;
 					} else {
-						if (is_numeric($id)) {
-							try {
-								return $instance->selectAll('', '', null, null, $errorMessage);
-							} catch (Exception $e) {
-								$errorMessage = $e->getMessage();
-								return;
-							}
-						} else {
-							$instance->{$id}();
+						try {
+							return $instance->selectAll('', '', null, null, $errorMessage);
+						} catch (Exception $e) {
+							$errorMessage = $e->getMessage();
+							return;
 						}
 					}
 					break;
