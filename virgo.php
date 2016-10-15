@@ -36,7 +36,7 @@
 	function getInstanceByName($entity) {
 		$entityName = ucfirst($entity);
 		$className = VIRGO_PORTAL_INSTANCE."\\virgo" . $entityName;
-		require_once(PORTAL_PATH.DIRECTORY_SEPARATOR.'portlets/'.VIRGO_PORTAL_INSTANCE.'/virgo' . $entityName . '/controller.php');
+		// do we need this since we have autoloader??? require_once(PORTAL_PATH.DIRECTORY_SEPARATOR.'portlets/'.VIRGO_PORTAL_INSTANCE.'/virgo' . $entityName . '/controller.php');
 		return new $className;		
 	}
 
