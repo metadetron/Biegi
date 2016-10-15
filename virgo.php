@@ -53,7 +53,13 @@
 						if (is_numeric($id)) {
 							$instance->load($id);
 						} else {
-							return $instance->{$id}();
+							// whoa dude, not so fast...
+							// return $instance->{$id}();
+							if ($entityName == "dictionary") {
+								return $instance->{$id}();
+							} else {
+								$errorMessage = "Illegal method call $id on entity $entityName";
+							}
 						}
 						return $instance;
 					} else {
