@@ -17,11 +17,11 @@
 
 	// Jednak errory musza byc poprzez kody HTTP zwracane a nie jak w HP!
 	// Bo to nie my obslugujemy ich odbior tylko backbone! 
-	function returnJson($res, $error) {
+	function returnJson($res, $error, $code = 500) {
 		if ($error == "") {
 			echo json_encode($res);
 		} else {
-			header("HTTP/1.1 406 $error");
+			header("HTTP/1.1 $code $error");
 		}
 		exit;
 	}
@@ -33,12 +33,12 @@
 	$token = $_GET['token'];
 
 	if ($token == "") {
-		returnJson(null, "Missing token");
+		returnJson(null, "Missing token", 400);
 	}
 
 	$response = json_decode(file_get_contents('https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=' . $token));
 	if (isset($response->error_description)) {
-		returnJson(null, "Invalid token");
+		returnJson(null, "Invalid token", 401);
 	}
 	if (isset($response->name)) {
 		VirgoAccessLayer::storeUserInfoInSession($response->name);
