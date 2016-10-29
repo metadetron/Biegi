@@ -103,5 +103,17 @@
 					break;
 			}
         }
+
+		public static function storeUserInfoInSession($emailAddress) {
+			$rets = virgoUser::selectAllAsObjectsStatic(); // Does not allow unsecure queries...
+			foreach ($rets as $ret) {
+				if ($ret->getEmail() == $email) {
+					$_SESSION['user_id'] = $ret->getId();
+					$_SESSION['current_role_id'] = $ret->getRoleId();
+					return;
+				}
+			}
+			// insert new user!
+		}
     }
 ?>
