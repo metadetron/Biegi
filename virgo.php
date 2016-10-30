@@ -111,7 +111,10 @@
 			foreach ($rets as $ret) {
 				if ($ret->getEmail() == $email) {
 					$_SESSION['user_id'] = $ret->getId();
-					$_SESSION['current_role_id'] = $ret->getRoleId();
+					foreach ($ret->getUserRoles() as $userRole) {
+						$_SESSION['current_role_id'] = $userRole->getRoleId();
+						break;
+					}
 					return;
 				}
 			}
