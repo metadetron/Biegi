@@ -73,7 +73,7 @@
 						}
 					}
 					break;
-				case "POST":
+				case "PUT":
 					try {
 						$instance->loadRecordFromRequest(null);
 						$errMsg = $instance->store();
