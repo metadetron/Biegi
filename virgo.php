@@ -109,13 +109,12 @@
 		public static function storeUserInfoInSession($emailAddress) {
 			$rets = virgoUser::selectAllAsObjectsStatic(); // Does not allow unsecure queries...
 			foreach ($rets as $ret) {
-				if ($ret->getEmail() == $email) {
+				if ($ret->getEmail() == $emailAddress) {
 					$_SESSION['user_id'] = $ret->getId();
 					foreach ($ret->getUserRoles() as $userRole) {
 						$_SESSION['current_role_id'] = $userRole->getRoleId();
-						break;
+						return;
 					}
-					return;
 				}
 			}
 			// insert new user!
