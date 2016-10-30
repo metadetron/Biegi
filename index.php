@@ -36,7 +36,11 @@
 		returnJson(null, "Missing token", 400);
 	}
 
-	$response = json_decode(file_get_contents('https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=' . $token));
+	$ch =  curl_init('https://www.googleapis.com/oauth2/v3/tokeninfo?id_token=' . $token);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	$result = curl_exec($ch);
+
+	$response = json_decode($result);
 	if (isset($response->error_description)) {
 		returnJson(null, "Invalid token", 401);
 	}
