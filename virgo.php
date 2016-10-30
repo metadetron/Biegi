@@ -20,7 +20,7 @@
 	include_once(PORTAL_PATH.DIRECTORY_SEPARATOR.'libraries'.DIRECTORY_SEPARATOR.'core'.DIRECTORY_SEPARATOR.'functions.php');
 	include_once(PORTAL_PATH.DIRECTORY_SEPARATOR.'libraries'.DIRECTORY_SEPARATOR.'core'.DIRECTORY_SEPARATOR.'core.php');
 
-	use use portal\virgoUser;
+	use portal\virgoUser;
 
 	function virgoAutoloader($classWithNamespace) {
 		$elements = explode("\\", $classWithNamespace);
