@@ -95,7 +95,7 @@
 						$instance->load($id);
 			            $_PUT = json_decode(file_get_contents('php://input'), true);
             			foreach ($_PUT as $key => $value) {
-                			$this->{$key} = $value;
+                			$instance->{$key} = $value;
             			}
 						$errMsg = $instance->store();
 						if ($errMsg == "") {
