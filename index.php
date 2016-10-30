@@ -44,8 +44,8 @@
 	if (isset($response->error_description)) {
 		returnJson(null, "Invalid token", 401);
 	}
-	if (isset($response->name)) {
-		VirgoAccessLayer::storeUserInfoInSession($response->name);
+	if (isset($response->email)) {
+		VirgoAccessLayer::storeUserInfoInSession($response->email);
 	}
 
 	$method = $_SERVER['REQUEST_METHOD'];
