@@ -73,9 +73,29 @@
 						}
 					}
 					break;
-				case "PUT":
+				case "POST":
 					try {
 						$instance->loadRecordFromRequest(null);
+						$errMsg = $instance->store();
+						if ($errMsg == "") {
+							return;
+						} else {
+							$errorMessage = $errMsg;
+						} 
+						return;
+					} catch (Exception $e) {
+						$errorMessage = $e->getMessage();
+						return;
+					}
+					break;
+				case "PUT":
+					try {
+						// just happy path coded, needs error handling etc...
+						$instance->loadRecordFromRequest($id);
+						$instance->load($id);
+            			foreach ($_POST as $key => $value) {
+                			$this->{$key} = $value;
+            			}
 						$errMsg = $instance->store();
 						if ($errMsg == "") {
 							return;
