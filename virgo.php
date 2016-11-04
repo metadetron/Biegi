@@ -76,6 +76,10 @@
 				case "POST":
 					try {
 						$instance->loadRecordFromRequest(null);
+			            $_POST = json_decode(file_get_contents('php://input'), true);
+            			foreach ($_POST as $key => $value) {
+                			$instance->{$key} = $value;
+            			}
 						$errMsg = $instance->store();
 						if ($errMsg == "") {
 							return;
